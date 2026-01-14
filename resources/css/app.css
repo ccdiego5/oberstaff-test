@@ -257,6 +257,19 @@ body {
     text-decoration: none;
 }
 
+/* Navbar legible sobre video (dark theme) */
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .lang-selector,
+[data-theme="dark"] .theme-toggle {
+    color: #ffffff !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .nav-link::after {
+    background: #ffffff;
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -523,6 +536,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    color: #111111; /* icono play visible en dark */
 }
 
 .video-thumbnail:hover .play-overlay {
