@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const revealAndPlayHeroVideo = async () => {
         if (!heroVideo || !placeholder) return;
 
-        // Ocultar botón cuando arranca el video (como pediste)
-        if (heroBtn) heroBtn.classList.add('is-hidden');
+        // Nada se oculta: todo debe mantenerse visible
 
         // Transición del placeholder -> video
         placeholder.classList.add('fade-out');
@@ -65,22 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ease: 'power2.inOut'
         });
 
+        // Aplicar estado de sonido actual al video
+        heroVideo.muted = !isSoundOn;
+        if (!heroVideo.muted) heroVideo.volume = 0.35;
+
         try {
             await heroVideo.play(); // gesto del usuario => debe permitir play
         } catch (e) {
             // si el navegador bloquea, igual escondemos placeholder y dejamos el primer frame
         }
-
-        // Fullscreen como en el comentario de Figma (solo en click)
-        try {
-            if (heroVideo.requestFullscreen) {
-                await heroVideo.requestFullscreen();
-            } else if (heroVideo.webkitRequestFullscreen) {
-                heroVideo.webkitRequestFullscreen();
-            } else if (heroVideo.msRequestFullscreen) {
-                heroVideo.msRequestFullscreen();
-            }
-        } catch (e) {}
 
         setTimeout(() => {
             placeholder.style.display = 'none';
@@ -163,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
     gsap.from(['.hero-title-img', '.hero-subtitle', '.hero-btn'], {
         duration: 0.9,
         y: 18,
-        opacity: 0,
+        opacity: 1,
         stagger: 0.12,
         ease: 'power2.out',
         delay: 0.2
