@@ -31,7 +31,7 @@
                         <option>DE</option>
                     </select>
 
-                    <a href="#" id=""><i class="bi bi-three-dots"></i></a>
+                    <a class="nav-link" href="#" id=""><i class="bi bi-three-dots"></i></a>
                 </div>
 
                 <!-- Mobile Menu Toggle -->
