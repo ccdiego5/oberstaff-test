@@ -342,8 +342,8 @@ body {
 }
 
 .btn-book:hover {
-    background: transparent;
-    color: var(--text-primary);
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
 }
 
