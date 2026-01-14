@@ -422,7 +422,7 @@ body {
     background: rgba(255, 255, 255, 0.18);
     border-color: rgba(255, 255, 255, 0.35);
     color: #ffffff;
-    transform: translateY(-2px);
+    transform: none;
 }
 
 [data-theme="light"] .hero-btn {
@@ -435,6 +435,7 @@ body {
     background: rgba(255, 255, 255, 0.35);
     border-color: rgba(255, 255, 255, 0.6);
     color: #ffffff;
+    transform: none;
 }
 
 /* Hero Footer */
@@ -486,9 +487,7 @@ body {
     pointer-events: auto; /* clickable */
 }
 
-.sound-control:hover {
-    transform: translateX(-50%) scale(1.02);
-}
+
 
 /* Video Thumbnail */
 .video-thumbnail {
@@ -645,12 +644,9 @@ body {
     transition: all 0.3s ease;
 }
 
-.sound-control:hover {
-    transform: scale(1.05);
-}
 
 .sound-icon-img {
-    width: 22px;
+    width: 35px;
     height: 22px;
     object-fit: contain;
     opacity: 0.8;

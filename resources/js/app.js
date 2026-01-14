@@ -165,25 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 0.2
     });
 
-    // Efecto hover en el botón con GSAP
-    // heroBtn ya está definido arriba
-    if (heroBtn) {
-        heroBtn.addEventListener('mouseenter', () => {
-            gsap.to(heroBtn, {
-                scale: 1.05,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
-        
-        heroBtn.addEventListener('mouseleave', () => {
-            gsap.to(heroBtn, {
-                scale: 1,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
-    }
+    // Nota: sin animación hover en el botón (no debe moverse)
 
     // (Eliminadas animaciones on-scroll para no romper nada)
 
