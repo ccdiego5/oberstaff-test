@@ -106,7 +106,7 @@
     </section>
 
     <!-- Content Section (ejemplo de más contenido) -->
-    <section class="py-5" style="background: #ffffff; color: #1a1a1a;">
+    <section class="cover-sheet py-5" style="background: #ffffff; color: #1a1a1a;">
         <div class="container py-5">
             <div class="row align-items-center mb-5">
                 <div class="col-lg-6 mb-4 mb-lg-0">

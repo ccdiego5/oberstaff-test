@@ -5,14 +5,39 @@ import * as bootstrap from 'bootstrap';
 
 // Importar librerías de animación
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 // (Mantenemos GSAP; quitamos Anime/Three para evitar ruido)
 
 // Hacer disponibles globalmente (si luego quieres animaciones extra)
 window.gsap = gsap;
+gsap.registerPlugin(ScrollTrigger);
 
 // Animaciones del Hero
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // Lenis (scroll suave) + sync con ScrollTrigger (como Entuitive)
+    // Importante: NO reescribe tu lógica del hero, solo suaviza el input de scroll.
+    const prefersReducedMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+        const lenis = new Lenis({
+            // Un poco más "rápido" para que el cover-sheet responda al primer tick
+            lerp: 0.06,
+            smoothWheel: true,
+            wheelMultiplier: 1.35,
+            smoothTouch: false,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            // GSAP ticker time (s) -> Lenis raf espera ms
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
+
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
@@ -188,6 +213,74 @@ document.addEventListener('DOMContentLoaded', function() {
                 stopHeroVideoAndRestorePlaceholder();
             }
         });
+    }
+
+    // Efecto tipo Entuitive:
+    // - El HERO queda "pinned"
+    // - El HERO se va hacia atrás (scale + blur)
+    // - La siguiente sección (cover-sheet) sube y cubre el HERO
+    const heroSection = document.querySelector('.hero-section');
+    const heroMediaEl = document.querySelector('.hero-media');
+    const coverSheet = document.querySelector('.cover-sheet');
+
+    if (heroSection && coverSheet) {
+        // Arranca "cerca" para que suba desde el primer scroll
+        gsap.set(coverSheet, { yPercent: 15, willChange: 'transform' });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: heroSection,
+                start: 'top top',
+                end: '+=65%',
+                scrub: true,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onEnter: () => {
+                    document.documentElement.classList.add('is-pin-scroll');
+                    document.body.classList.add('is-pin-scroll');
+                },
+                onLeave: () => {
+                    document.documentElement.classList.remove('is-pin-scroll');
+                    document.body.classList.remove('is-pin-scroll');
+                },
+                onEnterBack: () => {
+                    document.documentElement.classList.add('is-pin-scroll');
+                    document.body.classList.add('is-pin-scroll');
+                },
+                onLeaveBack: () => {
+                    document.documentElement.classList.remove('is-pin-scroll');
+                    document.body.classList.remove('is-pin-scroll');
+                },
+            },
+        });
+
+        // Asegurar que el contenido (header.png, p, btn) NO cambie opacidad
+        tl.set(['.hero-title-img', '.hero-subtitle', '.hero-btn'], { opacity: 1 }, 0);
+
+        // Hero "hacia atrás"
+        if (heroMediaEl) {
+            tl.to(
+                heroMediaEl,
+                {
+                    scale: 0.90,
+                    filter: 'blur(4px)',
+                    transformOrigin: '50% 50%',
+                    ease: 'none',
+                },
+                0
+            );
+        }
+
+        // Cover sheet sube y cubre
+        tl.to(
+            coverSheet,
+            {
+                yPercent: 0,
+                ease: 'none',
+            },
+            0
+        );
     }
     
     // Animaciones suaves (sin romper el layout)

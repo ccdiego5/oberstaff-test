@@ -48,12 +48,51 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Lenis base (evita conflictos con scroll-behavior/altura) */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+/* Mientras el hero está "pinned", ocultamos el indicador de scroll (como Entuitive) */
+html.is-pin-scroll,
+body.is-pin-scroll {
+    scrollbar-width: none; /* Firefox */
+}
+html.is-pin-scroll::-webkit-scrollbar,
+body.is-pin-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 /* Hero Section */
 .hero-section {
     position: relative;
     min-height: 100vh;
     min-height: 100svh;
     overflow: hidden;
+}
+
+/* Efecto “cover sheet” (sección blanca sube y cubre el hero) */
+.cover-sheet {
+    position: relative;
+    z-index: 40;
+    margin-top: 0; /* el solape lo maneja GSAP */
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.18);
 }
 
 .hero-media {
