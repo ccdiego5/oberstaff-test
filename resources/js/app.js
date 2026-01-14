@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const placeholder = document.getElementById('video-placeholder');
     const heroBtn = document.querySelector('.hero-btn');
     const videoThumbnail = document.getElementById('video-thumbnail');
+    const heroMedia = document.querySelector('.hero-media');
 
     // Asegurar que el video NO arranque solo
     if (heroVideo) {
@@ -73,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (e) {
             // si el navegador bloquea, igual escondemos placeholder y dejamos el primer frame
         }
+
+        // Cuando el video ya está reproduciéndose, lo mostramos nítido (igual que la imagen)
+        if (heroMedia) heroMedia.classList.add('is-playing');
 
         setTimeout(() => {
             placeholder.style.display = 'none';
