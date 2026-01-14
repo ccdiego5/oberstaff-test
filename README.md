@@ -1,59 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+### Oberstaff — Landing / Prueba técnica (Laravel + Bootstrap + Animaciones)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Proyecto de landing page construido con **Laravel (Blade)** y **Vite**, enfocado en replicar una experiencia visual tipo “showreel/hero” y secciones de contenido basadas en diseño (Figma), con micro‑interacciones y animaciones on‑scroll.
 
-## About Laravel
+### Objetivo del proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **UI/UX premium**: hero con imagen placeholder + video de fondo bajo demanda (“Play/Stop Showreel”), overlay con blur, controles de sonido, y transición suave al desplazarse.
+- **Secciones basadas en diseño**: “Featured experiences” (tarjetas) y “Leave / Connect” (composición editorial con assets).
+- **Animación y scroll**: efecto de “hero hacia atrás” y entradas suaves a medida que el usuario hace scroll.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Funcionalidades implementadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Hero**:
+  - Placeholder (imagen) mientras el video está detenido; al pulsar “Play Showreel” se reproduce y se hace la transición.
+  - Control de audio (SOUND ON/OFF) independiente del estado del video.
+  - Hora dinámica con zona horaria **Europe/Madrid**.
+  - Efecto de transición al scroll inspirado en Entuitive (pin + “push” del contenido).
+- **Featured experiences**:
+  - Tabs (IBIZA / MALLORCA / SARDINIA) y tarjetas con assets.
+  - Barra de “scroll” fina + flechas con iconos normal/hover.
+- **Leave / Connect**:
+  - Composición de imágenes + textos exactos del diseño.
+  - Fondo con textura (assets) y layout responsive.
+- **Animaciones on‑scroll (reveal)**:
+  - Entradas suaves “hacia arriba” + fade para elementos desde “Featured” hacia abajo.
 
-## Learning Laravel
+### Tecnologías utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- **Backend**
+  - **Laravel** (PHP)
+  - **Blade** (templating)
+- **Frontend**
+  - **Vite** (bundling/build)
+  - **Bootstrap 5** (+ Popper)
+  - **Bootstrap Icons**
+  - **CSS personalizado** (variables, overlay, blur, layout responsive)
+  - **JavaScript (ESM)**
+- **Animación / Scroll**
+  - **GSAP** + **ScrollTrigger**
+  - **Lenis** (scroll suave)
+- **Tipografía**
+  - **Montserrat** (Google Fonts)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Estructura de assets
 
-## Laravel Sponsors
+Los recursos se organizan en `public/assets/` (icons, bg, img, text, btn, video).  
+Esta estructura permite referenciar los assets directamente desde Blade con `asset('...')`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Flujo de trabajo de diseño (Figma → Producción)
 
-### Premium Partners
+- **Extracción desde Figma**: se exportaron los elementos visuales necesarios (títulos como imágenes, iconografía, fondos y tarjetas).
+- **Edición en Photoshop 2026**: se optimizaron/ajustaron recursos (recortes, fondos, texturas y variantes) para usarlos en web sin depender de recursos externos.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Cómo ejecutar el proyecto (entorno local)
 
-## Contributing
+- **Requisitos**:
+  - PHP + Composer
+  - Node.js + npm
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- **Instalación**:
 
-## Code of Conduct
+```bash
+composer install
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Arranque**:
 
-## Security Vulnerabilities
+```bash
+php artisan serve
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Archivos clave
 
-## License
+- **Vista principal**: `resources/views/welcome.blade.php`
+- **Estilos**: `resources/css/app.css`
+- **Comportamiento/animaciones**: `resources/js/app.js`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Registro de trabajo (sesión)
+
+- **Inicio**: 1:00 PM  
+- **Fin**: 7:00 PM  
+
+En este periodo se realizó la integración completa de estilos, comportamiento interactivo, animaciones y composición de secciones basadas en diseño, además del pipeline de assets para producción.
