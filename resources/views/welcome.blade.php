@@ -238,119 +238,84 @@
                                 <button class="featured-card-cta" type="button" aria-label="Open Lagoon">
                                     <img src="{{ asset('assets/btn/btn-1.png') }}" alt="" class="featured-cta-img">
                                 </button>
-                            </div>                            
+                            </div>
                         </div>
                     </article>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Locations Section -->
-    <section id="locations" class="py-5" style="background: #f8f9fa;">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 class="display-3 fw-bold mb-3">Our Locations</h2>
-                <p class="lead text-muted">Explore breathtaking trails across the Mediterranean</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100">
-                        <div class="card-body p-4">
-                            <img src="{{ asset('assets/icons/icon-3.png') }}" alt="Ibiza" class="mb-3" style="width: 50px;">
-                            <h3 class="h4 fw-bold mb-3">Ibiza</h3>
-                            <p class="text-muted mb-4">
-                                Discover hidden coves and ancient trails along the stunning Ibizan coastline.
-                            </p>
-                            <a href="#" class="btn btn-outline-dark rounded-pill">Explore Ibiza</a>
-                        </div>
+            <!-- Featured bottom thin scrollbar + arrows -->
+            <div class="featured-bottom-nav mt-4 mt-lg-5">
+                <div class="featured-scrollbar" aria-hidden="true">
+                    <div class="featured-scrollbar-track">
+                        <div class="featured-scrollbar-thumb"></div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100">
-                        <div class="card-body p-4">
-                            <img src="{{ asset('assets/icons/icon-4.png') }}" alt="Mallorca" class="mb-3" style="width: 50px;">
-                            <h3 class="h4 fw-bold mb-3">Mallorca</h3>
-                            <p class="text-muted mb-4">
-                                Trek through the dramatic Serra de Tramuntana mountain range.
-                            </p>
-                            <a href="#" class="btn btn-outline-dark rounded-pill">Explore Mallorca</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card border-0 shadow-lg h-100">
-                        <div class="card-body p-4">
-                            <img src="{{ asset('assets/icons/icon-5.png') }}" alt="Sardinia" class="mb-3" style="width: 50px;">
-                            <h3 class="h4 fw-bold mb-3">Sardinia</h3>
-                            <p class="text-muted mb-4">
-                                Experience the wild beauty of Sardinia's pristine wilderness.
-                            </p>
-                            <a href="#" class="btn btn-outline-dark rounded-pill">Explore Sardinia</a>
-                        </div>
-                    </div>
+                <div class="featured-arrows">
+                    <button class="featured-arrow" type="button" aria-label="Previous">
+                        <img src="{{ asset('assets/icons/arrow-left.png') }}" alt="" class="arrow-img arrow-img-default">
+                        <img src="{{ asset('assets/icons/arrow-left-hover.png') }}" alt="" class="arrow-img arrow-img-hover">
+                    </button>
+                    <button class="featured-arrow" type="button" aria-label="Next">
+                        <img src="{{ asset('assets/icons/arrow-right.png') }}" alt="" class="arrow-img arrow-img-default">
+                        <img src="{{ asset('assets/icons/arrow-right-hover.png') }}" alt="" class="arrow-img arrow-img-hover">
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-5" style="background: #1a1a1a; color: #ffffff;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h3 class="h5 fw-bold mb-3">THE HIKE STATION</h3>
-                    <p class="text-muted">
-                        Reconnecting people with nature through unforgettable hiking experiences.
+    <!-- Leave / Connect Section -->
+    <section
+        class="leave-section py-5"
+        style="--leave-texture: url('{{ asset('assets/bg/ef2e03bcd0fa1c7a1bbc9c169de7c0d08520d1d9.png') }}');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;">
+        <div class="container leave-wrap py-4 py-lg-5">
+            <div class="row g-4 align-items-start leave-top">
+                <div class="col-12 col-lg-5">
+                    <div class="leave-image leave-image-lg">
+                        <img src="{{ asset('assets/img/content-1.png') }}" alt="Experience" class="leave-img">
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-7">
+                    <div class="leave-copy">
+                        <img src="{{ asset('assets/text/leave.png') }}" alt="Leave your backpack behind" class="leave-title-img">
+                        <p class="leave-lead">
+                            We offer transformative hiking experiences in the heart of nature. Our holistic hikes are curated to support the wellbeing of mind, heart and body.
+                        </p>
+                        <p class="leave-sub">
+                            Give us three hours and we’ll give you back your life.
+                        </p>
+                        <a href="#locations" class="leave-btn">EXPLORE HIKING LOCATIONS</a>
+                    </div>
+
+                    <div class="leave-image leave-image-sm">
+                        <img src="{{ asset('assets/img/content-2.png') }}" alt="Destination" class="leave-img">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-center mt-4 mt-lg-5 leave-bottom">
+                <div class="col-12 col-lg-4">
+                    <div class="leave-circle">
+                        <img src="{{ asset('assets/img/content-3.png') }}" alt="Nature detail" class="leave-circle-img">
+                    </div>
+                </div>
+                <div class="col-12 col-lg-8">
+                    <img src="{{ asset('assets/text/connect.png') }}" alt="Connect with the power of nature" class="leave-connect-img">
+                    <p class="leave-bottom-copy">
+                        Volutpat placerat. Lorem sollicitudin. Praesent amet, placerat Donec nisl. non id ipsum Sed dignissim, elit felis, nibh.
                     </p>
                 </div>
-
-                <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
-                    <h4 class="h6 fw-bold mb-3">Locations</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Ibiza</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Mallorca</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Sardinia</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
-                    <h4 class="h6 fw-bold mb-3">Company</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Our Guides</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-4 mb-4 mb-lg-0">
-                    <h4 class="h6 fw-bold mb-3">Support</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">FAQ</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Terms</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2">
-                    <h4 class="h6 fw-bold mb-3">Follow Us</h4>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-muted"><img src="{{ asset('assets/icons/icon-6.png') }}" alt="Social" style="width: 24px;"></a>
-                        <a href="#" class="text-muted"><img src="{{ asset('assets/icons/icon-7.png') }}" alt="Social" style="width: 24px;"></a>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-
-            <div class="text-center text-muted">
-                <small>&copy; {{ date('Y') }} The Hike Station. All rights reserved.</small>
             </div>
         </div>
-    </footer>
+    </section>
+
+
 </body>
 
 </html>
