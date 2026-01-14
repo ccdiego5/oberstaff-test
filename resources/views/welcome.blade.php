@@ -30,7 +30,7 @@
                         <option>EN</option>
                         <option>DE</option>
                     </select>
-                    
+
                     <!-- Theme Toggle -->
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                         <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -60,66 +60,53 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <!-- Placeholder Image (se muestra hasta que el video cargue) -->
-        <div class="video-placeholder" id="video-placeholder">
-            <img src="{{ asset('assets/bg/hero-1.png') }}" alt="Beautiful bay" class="placeholder-image">
-            <div class="loading-animation">
-                <div class="loading-spinner"></div>
-                <p class="loading-text">Loading Experience...</p>
+        <!-- Media (placeholder + video + overlay SOLO del video) -->
+        <div class="hero-media">
+            <!-- Placeholder Image (se muestra hasta que el video cargue) -->
+            <div class="video-placeholder" id="video-placeholder">
+                <img src="{{ asset('assets/bg/hero-1.png') }}" alt="Beautiful bay" class="placeholder-image">
             </div>
+
+            <!-- Background Video -->
+            <video
+                id="hero-video"
+                class="hero-bg hero-video"
+                muted
+                loop
+                playsinline
+                preload="auto">
+                <source src="{{ asset('assets/video/pikaso-untitled-project-2026-01-14.mp4') }}" type="video/mp4">
+            </video>
+
+            <!-- Overlay negro SOLO para el video -->
+            <div class="hero-media-overlay" aria-hidden="true"></div>
         </div>
 
-        <!-- Background Video -->
-        <video
-            id="hero-video"
-            class="hero-bg hero-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto">
-            <source src="{{ asset('assets/video/1110140_Seashore_Deep_1920x1080.mp4') }}" type="video/mp4">
-        </video>
+        <!-- Hero Content (izquierda) -->
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <img src="{{ asset('assets/text/header.png') }}" alt="Reconnect with your highest self" class="hero-title-img">
 
-        <!-- Overlay -->
-        <div class="hero-overlay"></div>
+                <p class="hero-subtitle">
+                    Begin your journey to inner connection and discover the transformative power of nature.
+                </p>
 
-        <!-- Three.js Canvas para partículas -->
-        <canvas id="particles-canvas"></canvas>
-
-        <!-- Hero Content -->
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Reconnect with your
-                <span class="highlight">highest</span> self
-            </h1>
-
-            <p class="hero-subtitle">
-                Begin your journey to inner connection and discover the transformative power of nature.
-            </p>
-
-            <a href="#locations" class="hero-btn">
-                EXPLORE HIKING LOCATIONS
-            </a>
+                <a href="#locations" class="hero-btn">
+                    EXPLORE HIKING LOCATIONS
+                </a>
+            </div>
         </div>
 
         <!-- Hero Footer Info -->
         <div class="hero-footer">
-            <div class="hero-footer-content">
-                <div class="hero-footer-item">
-                    <img src="{{ asset('assets/icons/icon-1.png') }}" alt="Time" class="hero-icon">
-                    <span>4:08 PM · EUROPE</span>
-                </div>
-
-                <div class="hero-footer-item sound-control" id="sound-toggle">
-                    <svg class="sound-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path class="sound-wave sound-wave-1" d="M16 8C17.5 9.5 17.5 14.5 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        <path class="sound-wave sound-wave-2" d="M19 5C21.5 7.5 21.5 16.5 19 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        <path d="M11 5L6 9H3v6h3l5 4V5z" fill="currentColor" />
-                    </svg>
-                    <span class="sound-text">SOUND: <span id="sound-status">OFF</span></span>
-                </div>
+            <div class="hero-time">
+                <span id="hero-time">--:--</span> <span class="hero-dot">·</span> <span class="hero-region">EUROPE</span>
             </div>
+
+            <button class="sound-control" id="sound-toggle" type="button">
+                <span class="sound-text">SOUND: <span id="sound-status">OFF</span></span>
+                <img src="{{ asset('assets/icons/icon-7.png') }}" alt="Sound" class="sound-icon-img">
+            </button>
         </div>
 
         <!-- Video Thumbnail -->
