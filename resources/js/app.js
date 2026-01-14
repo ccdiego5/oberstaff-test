@@ -308,4 +308,74 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Reveals on scroll (desde Featured hacia abajo)
+    // - Smooth "up" + fade
+    // - No toca el HERO para evitar bugs de opacity
+    const reduceMotion =
+        window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduceMotion) {
+        const revealUp = (targets, opts = {}) => {
+            const els = gsap.utils.toArray(targets).filter(Boolean);
+            if (!els.length) return;
+
+            els.forEach((el) => {
+                gsap.set(el, { willChange: 'transform,opacity' });
+                gsap.fromTo(
+                    el,
+                    { y: opts.y ?? 22, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: opts.duration ?? 0.9,
+                        ease: opts.ease ?? 'power2.out',
+                        scrollTrigger: {
+                            trigger: el,
+                            start: opts.start ?? 'top 88%',
+                            once: true,
+                            invalidateOnRefresh: true,
+                        },
+                        onComplete: () => gsap.set(el, { clearProps: 'willChange' }),
+                    }
+                );
+            });
+        };
+
+        // Featured
+        revealUp(['.featured-title-img', '.featured-tabs'], { y: 18, start: 'top 90%' });
+
+        const featuredCards = gsap.utils.toArray('.featured-card');
+        if (featuredCards.length) {
+            gsap.fromTo(
+                featuredCards,
+                { y: 26, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.95,
+                    ease: 'power2.out',
+                    stagger: 0.12,
+                    scrollTrigger: {
+                        trigger: '.featured-section',
+                        start: 'top 80%',
+                        once: true,
+                        invalidateOnRefresh: true,
+                    },
+                }
+            );
+        }
+
+        revealUp(['.featured-bottom-nav'], { y: 16, start: 'top 92%' });
+
+        // Leave
+        revealUp(['.leave-image-lg', '.leave-copy', '.leave-image-sm'], { y: 22, start: 'top 88%' });
+        revealUp(['.leave-circle', '.leave-connect-img', '.leave-bottom-copy', '.leave-btn'], {
+            y: 18,
+            start: 'top 90%',
+        });
+
+        // Por si Lenis/ScrollTrigger necesitaran recalcular después de layout
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+    }
 });
