@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroBtn = document.querySelector('.hero-btn');
     const videoThumbnail = document.getElementById('video-thumbnail');
     const heroMedia = document.querySelector('.hero-media');
+    const playLabel = document.querySelector('.video-thumbnail .play-text');
+    let showreelPlaying = false;
+    let hidePlaceholderTimer = null;
 
     // Asegurar que el video NO arranque solo
     if (heroVideo) {
@@ -78,9 +81,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cuando el video ya está reproduciéndose, lo mostramos nítido (igual que la imagen)
         if (heroMedia) heroMedia.classList.add('is-playing');
 
-        setTimeout(() => {
+        if (hidePlaceholderTimer) clearTimeout(hidePlaceholderTimer);
+        hidePlaceholderTimer = setTimeout(() => {
             placeholder.style.display = 'none';
         }, 1300);
+    };
+
+    const stopHeroVideoAndRestorePlaceholder = () => {
+        if (!heroVideo || !placeholder) return;
+
+        // Parar video y volver al inicio
+        try {
+            heroVideo.pause();
+            heroVideo.currentTime = 0;
+        } catch (e) {}
+
+        // Volver a estado visual "imagen"
+        if (hidePlaceholderTimer) clearTimeout(hidePlaceholderTimer);
+        hidePlaceholderTimer = null;
+
+        placeholder.style.display = '';
+        placeholder.classList.remove('fade-out');
+        if (heroMedia) heroMedia.classList.remove('is-playing');
+
+        // Limpiar estilos inline que dejó GSAP en la imagen
+        if (window.gsap) {
+            window.gsap.set('.placeholder-image', { clearProps: 'all' });
+        }
     };
     
     // Control de sonido
@@ -148,10 +175,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // (Sin efectos on-scroll por ahora: mantener simple como Figma)
 
-    // Click en "Play Showreel" => ejecutar video de fondo + transición
+    // Click en "Play/Stop Showreel" => toggle
     if (videoThumbnail) {
         videoThumbnail.addEventListener('click', () => {
-            revealAndPlayHeroVideo();
+            if (!showreelPlaying) {
+                showreelPlaying = true;
+                if (playLabel) playLabel.textContent = 'Stop Showreel';
+                revealAndPlayHeroVideo();
+            } else {
+                showreelPlaying = false;
+                if (playLabel) playLabel.textContent = 'Play Showreel';
+                stopHeroVideoAndRestorePlaceholder();
+            }
         });
     }
     
