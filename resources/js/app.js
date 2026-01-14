@@ -283,14 +283,13 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Animaciones suaves (sin romper el layout)
-    gsap.from(['.hero-title-img', '.hero-subtitle', '.hero-btn'], {
-        duration: 0.9,
-        y: 18,
-        opacity: 1,
-        stagger: 0.12,
-        ease: 'power2.out',
-        delay: 0.2
+    // IMPORTANTE:
+    // Evitamos animar .hero-title-img/.hero-subtitle/.hero-btn con GSAP aquí
+    // porque ya tienen animación CSS (fadeInUp) y se puede quedar un inline opacity/transform
+    // que luego “desaparece” al bajar/subir con ScrollTrigger/Lenis.
+    // Limpiamos inline styles por si ya quedaron pegados.
+    gsap.set(['.hero-title-img', '.hero-subtitle', '.hero-btn'], {
+        clearProps: 'opacity,transform'
     });
 
     // Nota: sin animación hover en el botón (no debe moverse)
@@ -298,4 +297,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // (Eliminadas animaciones on-scroll para no romper nada)
 
     // (Partículas/Three.js y efectos extra eliminados: no son parte del Figma)
+
+    // Featured tabs (solo UI)
+    const featuredTabs = document.querySelectorAll('.featured-tab');
+    if (featuredTabs.length) {
+        featuredTabs.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                featuredTabs.forEach((b) => b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+            });
+        });
+    }
 });

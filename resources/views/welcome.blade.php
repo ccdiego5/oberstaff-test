@@ -105,54 +105,142 @@
         </div>
     </section>
 
-    <!-- Content Section (ejemplo de más contenido) -->
-    <section class="cover-sheet py-5" style="background: #ffffff; color: #1a1a1a;">
-        <div class="container py-5">
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="display-4 fw-bold mb-4">Discover Your Path</h2>
-                    <p class="lead mb-4">
-                        Experience the transformative power of nature through our carefully curated hiking experiences across the Mediterranean's most breathtaking locations.
-                    </p>
-                    <p class="mb-4">
-                        From the rugged cliffs of Ibiza to the serene mountains of Sardinia, each trail is designed to reconnect you with your inner self while immersing you in stunning natural beauty.
-                    </p>
-                    <a href="#" class="btn btn-dark btn-lg rounded-pill px-5">Learn More</a>
+    <!-- Featured Experiences (cover-sheet) -->
+    <section class="cover-sheet featured-section py-5">
+        <div class="container py-4 py-lg-5">
+            <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-4 mb-4 mb-lg-5">
+                <div class="featured-title">
+                    <img src="{{ asset('assets/text/featured.png') }}" alt="Featured experiences" class="featured-title-img">
                 </div>
-                <div class="col-lg-6">
-                    <img src="{{ asset('assets/img/content-1.png') }}" alt="Hiking path" class="img-fluid rounded-4 shadow-lg">
+
+                <div class="featured-tabs" role="tablist" aria-label="Featured filters">
+                    <button type="button" class="featured-tab is-active" data-featured-tab="ibiza">IBIZA</button>
+                    <button type="button" class="featured-tab" data-featured-tab="mallorca">MALLORCA</button>
+                    <button type="button" class="featured-tab" data-featured-tab="sardinia">SARDINIA</button>
                 </div>
             </div>
 
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <h2 class="display-4 fw-bold mb-4">Guided Experiences</h2>
-                    <p class="lead mb-4">
-                        Our expert guides are passionate about sharing their knowledge of local flora, fauna, and the rich cultural heritage of each region.
-                    </p>
-                    <p class="mb-4">
-                        Whether you're a seasoned hiker or just beginning your journey, we offer experiences tailored to all levels, ensuring everyone can connect with nature at their own pace.
-                    </p>
-                    <a href="#" class="btn btn-dark btn-lg rounded-pill px-5">View Guides</a>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="{{ asset('assets/img/content-2.png') }}" alt="Guide leading group" class="img-fluid rounded-4 shadow-lg">
-                </div>
-            </div>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-12 col-lg-4">
+                    <article class="featured-card" data-location="ibiza">
+                        <img class="featured-card-bg" src="{{ asset('assets/img/tarjeta-1.png') }}" alt="Quelona">
 
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="display-4 fw-bold mb-4">Sustainable Tourism</h2>
-                    <p class="lead mb-4">
-                        We're committed to preserving the natural beauty of our hiking destinations for future generations.
-                    </p>
-                    <p class="mb-4">
-                        Our eco-friendly approach ensures that every step you take leaves a positive impact on the environment and local communities.
-                    </p>
-                    <a href="#" class="btn btn-dark btn-lg rounded-pill px-5">Our Mission</a>
+                        <div class="featured-card-top">
+                            <img src="{{ asset('assets/icons/icon-1.png') }}" alt="" class="featured-card-pin">
+                            <div class="featured-card-pills">
+                                <span class="featured-pill">Ibiza</span>
+                                <span class="featured-pill">Groups</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-stats">
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-4.png') }}" alt="" class="featured-stat-ico-large">
+                                <span>6-10 km</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-5.png') }}" alt="" class="featured-stat-ico">
+                                <span>2:30 - 4 hours</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-6.png') }}" alt="" class="featured-stat-ico">
+                                <span>Medium</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-bottom">
+                            <div class="featured-card-bottom-text">
+                                <h3 class="featured-card-name">Quelona</h3>
+                                <p class="featured-card-sub">The mythical western landscape</p>
+                                <button class="featured-card-cta" type="button" aria-label="Open Quelona">
+                                    <img src="{{ asset('assets/btn/btn-1.png') }}" alt="" class="featured-cta-img">
+                                </button>
+                            </div>
+
+                        </div>
+                    </article>
                 </div>
-                <div class="col-lg-6">
-                    <img src="{{ asset('assets/img/content-3.png') }}" alt="Sustainable hiking" class="img-fluid rounded-4 shadow-lg">
+
+                <!-- Card 2 -->
+                <div class="col-12 col-lg-4">
+                    <article class="featured-card" data-location="ibiza">
+                        <img class="featured-card-bg" src="{{ asset('assets/img/tarjeta-2.png') }}" alt="Pescador">
+
+                        <div class="featured-card-top">
+                            <img src="{{ asset('assets/icons/icon-2.png') }}" alt="" class="featured-card-pin">
+                            <div class="featured-card-pills">
+                                <span class="featured-pill">Ibiza</span>
+                                <span class="featured-pill">Team Buildings</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-stats">
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-4.png') }}" alt="" class="featured-stat-ico-large">
+                                <span>6-10 km</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-5.png') }}" alt="" class="featured-stat-ico">
+                                <span>2:30 - 4 hours</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-6.png') }}" alt="" class="featured-stat-ico">
+                                <span>Medium</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-bottom">
+                            <div class="featured-card-bottom-text">
+                                <h3 class="featured-card-name">Pescador</h3>
+                                <p class="featured-card-sub">The dramatic fisherman's trail</p>
+                                <button class="featured-card-cta" type="button" aria-label="Open Pescador">
+                                    <img src="{{ asset('assets/btn/btn-1.png') }}" alt="" class="featured-cta-img">
+                                </button>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-lg-4">
+                    <article class="featured-card" data-location="ibiza">
+                        <img class="featured-card-bg" src="{{ asset('assets/img/tarjeta-3.png') }}" alt="Lagoon">
+
+                        <div class="featured-card-top">
+                            <img src="{{ asset('assets/icons/icon-3.png') }}" alt="" class="featured-card-pin">
+                            <div class="featured-card-pills">
+                                <span class="featured-pill">Ibiza</span>
+                                <span class="featured-pill">Team Buildings</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-stats">
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-4.png') }}" alt="" class="featured-stat-ico-large">
+                                <span>6-10 km</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-5.png') }}" alt="" class="featured-stat-ico">
+                                <span>2:30 - 4 hours</span>
+                            </div>
+                            <div class="featured-stat">
+                                <img src="{{ asset('assets/icons/icon-6.png') }}" alt="" class="featured-stat-ico">
+                                <span>Medium</span>
+                            </div>
+                        </div>
+
+                        <div class="featured-card-bottom">
+                            <div class="featured-card-bottom-text">
+                                <h3 class="featured-card-name">Lagoon</h3>
+                                <p class="featured-card-sub">The mythical western landscape</p>
+                                <button class="featured-card-cta" type="button" aria-label="Open Lagoon">
+                                    <img src="{{ asset('assets/btn/btn-1.png') }}" alt="" class="featured-cta-img">
+                                </button>
+                            </div>                            
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
